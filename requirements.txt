@@ -1,5 +1,6 @@
 pandas
 openpyxl
+bokeh
 numpy
 matplotlib
 seaborn
