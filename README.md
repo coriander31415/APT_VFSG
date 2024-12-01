@@ -1,33 +1,56 @@
-# APT_VFSG
+# APT_VFSG Dashboard
+
+---
+
+## Live Dashboard 🌐
+
+The live interactive dashboard is available online:
+
+👉 **[View Live Dashboard](https://coriander31415.github.io/APT_VFSG/index.html)**
+
+---
+
+## Project Overview
 
 
-## Data
-This project uses raw data stored in the `data/raw/` directory. Specifically:
-- `APT_data-info-dictionary_final.xlsx`: This is the source file provided by the client. It is not modified and serves as the base for generating the processed CSV file.
+### Directory Structure
 
-The processed data is generated and stored in `data/processed/`.
+APT_VFSG/
+├── data/
+│   ├── raw/                   # Raw data files
+│   ├── processed/             # Processed, cleaned data files
+├── src/
+│   ├── data_processing/       # Data cleaning and preprocessing scripts
+│   ├── visualizations/        # Individual visualisation scripts
+│   └── dashboard.py           # Dashboard assembly script
+├── venv/                      # Virtual environment (optional)
+├── README.md                  # Project documentation
+├── requirements.txt           # Python dependencies
+└── main.py                    # Main entry point
 
-The processed CSV file is versioned in this repository to avoid frequent regeneration unless the source file is updated.
+---
 
-## Installation and Usage
+## How to Run the Project
 
-Follow these steps to set up and run the project:
-
-1. Clone the repository:
+1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/username/repository.git
-   cd repository
+   git clone https://github.com/yourusername/APT_VFSG.git
+   cd APT_VFSG
 
-2.	Create a virtual environment:
-python3 -m venv venv
-source venv/bin/activate  # Linux/MacOS
-venv\Scripts\activate     # Windows
+2. **Set Up the Environment**:
+  python3 -m venv venv
+  source venv/bin/activate  # On Linux/Mac
+  venv\Scripts\activate     # On Windows
+  deactivate                # deactivate when no need (optional)
 
-3.	Install required dependencies:
-pip install -r requirements.txt
+3. Install dependencies
+  pip install -r requirements.txt
 
-4. 	Run the project:
-python3 main.py
+4. **Run the Script**:
+    python3 main.py
 
-5.	(Optional) If you need to deactivate the virtual environment:
-  deactivate
+
+### Contribution
+Feel free to fork this repository and contribute! Open an issue for any bugs or feature requests.
+
+Enjoy exploring the APT_VFSG Dashboard! 🚀
