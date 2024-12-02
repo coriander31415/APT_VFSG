@@ -1,4 +1,4 @@
-# APT_VFSG Dashboard 🌟
+# APT_VFSG Dashboard 
 
 ##  👉 [**View Live Dashboard**](https://coriander31415.github.io/APT_VFSG/index.html) 🌐
 

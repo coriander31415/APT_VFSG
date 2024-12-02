@@ -43,8 +43,8 @@ def create_kpi_card_with_chart(indicator, data):
 
     # Create the line chart
     p = figure(width=300, height=100, tools="", toolbar_location=None, x_range=(min_year, current_year))
-    line_partially = p.line(x="Year", y="Partially", source=source, line_width=2, color="#F1B5B5")
-    line_yes = p.line(x="Year", y="Yes", source=source, line_width=2, color="#3F84E6")
+    line_partially = p.line(x="Year", y="Partially", source=source, line_width=3, color="#F1B5B5")
+    line_yes = p.line(x="Year", y="Yes", source=source, line_width=3, color="#3F84E6")
 
     custom_legend = Legend(items=[
       LegendItem(label="Yes", renderers=[line_yes]),
@@ -78,9 +78,10 @@ def create_kpi_card_with_chart(indicator, data):
     spacer = Spacer(sizing_mode="stretch_height")
 
     # Combine the chart and percentage in a Bokeh column layout
-    title_div = Div(text=f"<h3 style='font-size: 18px; font-weight: bold; text-align: left; margin: 0; padding: 0;'>{indicator}</h3>", width=300)
-    percentage_div = Div(text=f"<p style='font-size: 28px; font-weight: bold; margin: 0; padding: 0;'>{percentage}%</p>")
-    return column(title_div, percentage_div, spacer, p, spacing=1, sizing_mode="stretch_height")
+    title_div = Div(text=f"<h3 style='font-size: 20px; font-weight: bold; text-align: left; margin: 0; padding: 0;'>{indicator}</h3>", width=300)
+    percentage_div = Div(text=f"""<p  style='margin: 0; padding: 0; font-size: 32px; font-weight: bold; color: #3F84E6;'>{percentage}%
+                         <span style='font-size: 20px; color: black; font-weight: normal;'>({yes_partially_count} countries)</span></p>""")
+    return column(title_div, percentage_div, spacer, p, spacing=1, sizing_mode="stretch_both", margin=(20, 10, 10, 10))
 
 
 def create_viz_kpi_cards(data):
@@ -95,6 +96,6 @@ def create_viz_kpi_cards(data):
         kpi_card = create_kpi_card_with_chart(indicator, data)
         kpi_cards.append(kpi_card)
 
-    grid = gridplot(kpi_cards, ncols=4, sizing_mode="stretch_width") 
+    viz_kpi_cards = gridplot(kpi_cards, ncols=4, sizing_mode="stretch_width") 
 
-    return grid
+    return viz_kpi_cards

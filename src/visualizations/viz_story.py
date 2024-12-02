@@ -49,6 +49,6 @@ def create_viz_story(data):
     """)
 
     # Layout of the viz
-    viz3 = column(title, intro, timeline)
+    viz_story = column(title, intro, timeline)
 
-    return viz3
+    return viz_story
