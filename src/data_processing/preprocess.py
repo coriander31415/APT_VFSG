@@ -1,6 +1,5 @@
 import pandas as pd
 import os
-from datetime import datetime
 
 input_file = "data/raw/APT_data-info-dictionary_final.xlsx"
 output_file = "data/processed/APT_data.csv"

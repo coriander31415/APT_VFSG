@@ -14,7 +14,7 @@ def create_dashboard(data):
     viz_breakdown = create_viz_breakdown(data)
 
     apt_logo = Div(
-        text="<img src='assets/apt_logo_en_pos_pantone.jpg' style='max-height: 250px;'>",
+        text="<img src='.assets/apt_logo_en_pos_pantone.jpg' style='max-height: 250px;'>",
         width=300, height=300
     )
     vfsg_logo = Div(

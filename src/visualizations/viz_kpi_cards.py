@@ -1,8 +1,6 @@
 from bokeh.models import Div, ColumnDataSource, HoverTool, Spacer, Legend, LegendItem
 from bokeh.plotting import figure
 from bokeh.layouts import column, gridplot
-from matplotlib import legend_handler
-from matplotlib.pyplot import margins
 import pandas as pd
 import datetime
 

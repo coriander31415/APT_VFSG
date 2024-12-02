@@ -1,5 +1,4 @@
-from bokeh.plotting import figure
-from bokeh.models import ColumnDataSource, Select, CustomJS
+from bokeh.models import Select, CustomJS
 from bokeh.layouts import column, row
 from bokeh.models.widgets import Div
 import pandas as pd
