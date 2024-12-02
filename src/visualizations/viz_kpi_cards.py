@@ -1,6 +1,8 @@
-from bokeh.models import Div, ColumnDataSource, HoverTool
+from bokeh.models import Div, ColumnDataSource, HoverTool, Spacer, Legend, LegendItem
 from bokeh.plotting import figure
 from bokeh.layouts import column, gridplot
+from matplotlib import legend_handler
+from matplotlib.pyplot import margins
 import pandas as pd
 import datetime
 
@@ -40,11 +42,21 @@ def create_kpi_card_with_chart(indicator, data):
     })
 
     # Create the line chart
-    p = figure(width=250, height=80, tools="", toolbar_location=None, x_range=(min_year, current_year))
-    p.line(x="Year", y="Yes", source=source, line_width=3, color="#3F84E6", legend_label="Yes")
-    p.line(x="Year", y="Partially", source=source, line_width=2, color="#F1B5B5", legend_label="Partially")
+    p = figure(width=300, height=100, tools="", toolbar_location=None, x_range=(min_year, current_year))
+    line_partially = p.line(x="Year", y="Partially", source=source, line_width=2, color="#F1B5B5")
+    line_yes = p.line(x="Year", y="Yes", source=source, line_width=2, color="#3F84E6")
 
-    # Add hover tooltips
+    custom_legend = Legend(items=[
+      LegendItem(label="Yes", renderers=[line_yes]),
+      LegendItem(label="Partially", renderers=[line_partially])
+    ], location="top_left")
+
+    p.add_layout(custom_legend)
+    custom_legend.label_text_font_size = "9pt"
+    custom_legend.label_text_color = "grey"
+    custom_legend.background_fill_alpha = 0.1
+    custom_legend.border_line_color = None
+
     hover = HoverTool(tooltips=[
         ("Year", "@Year"),
         ("Yes", "@Yes"),
@@ -54,19 +66,24 @@ def create_kpi_card_with_chart(indicator, data):
 
     p.xaxis.ticker = [min_year, current_year]
     p.xaxis.major_label_overrides = {min_year: str(min_year), current_year: str(current_year)}
+    p.xaxis.major_label_text_color = "grey"
+    p.xaxis.major_tick_line_color = None
+    p.xaxis.axis_line_color = "grey"
+    p.xaxis.visible = True
     p.yaxis.visible = False
     p.xgrid.visible = False
     p.ygrid.visible = False
     p.outline_line_color = None
-    p.legend.visible = False
+
+    spacer = Spacer(sizing_mode="stretch_height")
 
     # Combine the chart and percentage in a Bokeh column layout
-    title_div = Div(text=f"<h3 style='font-size: 18px; font-weight: bold; text-align: left;'>{indicator}</h3>")
-    percentage_div = Div(text=f"<p style='font-size: 24px; font-weight: bold; margin: 10px 0; '>{percentage}%</p>")
-    return column(title_div, percentage_div, p, sizing_mode="stretch_width")
+    title_div = Div(text=f"<h3 style='font-size: 18px; font-weight: bold; text-align: left; margin: 0; padding: 0;'>{indicator}</h3>", width=300)
+    percentage_div = Div(text=f"<p style='font-size: 28px; font-weight: bold; margin: 0; padding: 0;'>{percentage}%</p>")
+    return column(title_div, percentage_div, spacer, p, spacing=1, sizing_mode="stretch_height")
 
 
-def viz1(data):
+def create_viz_kpi_cards(data):
     """
     Create adaptive KPI cards with charts for all indicators dynamically.
     """
@@ -79,6 +96,5 @@ def viz1(data):
         kpi_cards.append(kpi_card)
 
     grid = gridplot(kpi_cards, ncols=4, sizing_mode="stretch_width") 
-
 
     return grid

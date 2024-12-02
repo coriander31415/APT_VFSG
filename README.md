@@ -1,20 +1,18 @@
-# APT_VFSG Dashboard
+# APT_VFSG Dashboard 🌟
+
+##  👉 [**View Live Dashboard**](https://coriander31415.github.io/APT_VFSG/index.html) 🌐
+
+
+
+## Project Overview  
+
+The APT_VFSG Dashboard provides insightful visualisations and adaptive KPI cards for data analysis, using the power of **Bokeh** for interactive dashboards. This project aims to simplify data storytelling through visual representations.
 
 ---
 
-## Live Dashboard 🌐
+## Directory Structure  
 
-The live interactive dashboard is available online:
-
-👉 **[View Live Dashboard](https://coriander31415.github.io/APT_VFSG/index.html)**
-
----
-
-## Project Overview
-
-
-### Directory Structure
-
+```plaintext
 APT_VFSG/
 ├── data/
 │   ├── raw/                   # Raw data files
@@ -27,30 +25,38 @@ APT_VFSG/
 ├── README.md                  # Project documentation
 ├── requirements.txt           # Python dependencies
 └── main.py                    # Main entry point
-
+```
 ---
 
 ## How to Run the Project
 
 1. **Clone the Repository**:
-   ```bash
+
+    ```bash
    git clone https://github.com/yourusername/APT_VFSG.git
    cd APT_VFSG
+    ```
 
-2. **Set Up the Environment**:
-  python3 -m venv venv
-  source venv/bin/activate  # On Linux/Mac
-  venv\Scripts\activate     # On Windows
-  deactivate                # deactivate when no need (optional)
+2. **Set Up the Environment**: 
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate  # On Linux/Mac
+    venv\Scripts\activate     # On Windows
+    deactivate                # deactivate when no need (optional)
+    ```
 
 3. Install dependencies
-  pip install -r requirements.txt
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 4. **Run the Script**:
+    ```bash
     python3 main.py
+    ```
 
 
-### Contribution
+### Contributing 🤝
 Feel free to fork this repository and contribute! Open an issue for any bugs or feature requests.
 
 Enjoy exploring the APT_VFSG Dashboard! 🚀

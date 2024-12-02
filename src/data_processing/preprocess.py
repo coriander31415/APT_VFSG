@@ -42,7 +42,14 @@ def preprocess_excel_to_csv(input_file, output_file, sheet_name=0, date_col='Dat
 
         # Preprocess data
         if date_col in data.columns:
-            data[date_col] = pd.to_datetime(data[date_col], errors='coerce')
+            data[date_col] = data[date_col].apply(  
+                lambda x: pd.to_datetime(x, format='%Y', errors='coerce') if isinstance(x, int)  
+                else pd.to_datetime(x, errors='coerce')  
+            )
+            # Replace dates earlier than 1984 with 1984 (client's requirement)
+            data[date_col] = data[date_col].apply(  
+                lambda x: pd.Timestamp('1984-01-01') if pd.notna(x) and x.year < 1984 else x 
+            )
         for col in category_cols:
             if col in data.columns:
                 data[col] = data[col].astype('category')

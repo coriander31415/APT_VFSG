@@ -1,18 +1,21 @@
 from bokeh.layouts import column
 from bokeh.io import output_file, save, show
-from src.visualizations.viz1 import viz1
-from src.visualizations.viz2 import viz2
+from src.visualizations.viz_kpi_cards import create_viz_kpi_cards
+from src.visualizations.viz2 import create_viz2
+from src.visualizations.viz_story import create_viz_story
 
 def create_dashboard(data):
     """
     Assemble all visualizations into a single dashboard layout.
     """
-    kpi_cards = viz1(data)
-    main_viz = viz2(data)
+    viz_story = create_viz_story(data)
+    viz_kpi_cards = create_viz_kpi_cards(data)
+    viz2 = create_viz2(data)
 
     return column(
-        kpi_cards,
-        main_viz,
+        viz_story,
+        viz_kpi_cards,
+        viz2,
         sizing_mode="stretch_width"
     )
 
